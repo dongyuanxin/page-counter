@@ -1,5 +1,5 @@
 {
-  "name": "vview",
+  "name": "page-counter",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dongyuanxin/vview.git"
+    "url": "git+ssh://git@github.com/dongyuanxin/page-counter.git"
   },
   "author": "DongYuanxin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dongyuanxin/vview/issues"
+    "url": "https://github.com/dongyuanxin/page-counter/issues"
   },
-  "homepage": "https://github.com/dongyuanxin/vview#readme",
+  "homepage": "https://github.com/dongyuanxin/page-counter#readme",
   "devDependencies": {
     "mysql": "^2.17.1",
     "webpack": "^4.30.0",
