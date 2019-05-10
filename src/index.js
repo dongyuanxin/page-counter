@@ -26,7 +26,7 @@ async function count() {
   dom.innerHTML = times
 }
 
-(function() {
-  setData()
-  count()
-})()
+export default {
+  setData,
+  count
+}

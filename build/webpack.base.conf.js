@@ -5,7 +5,7 @@ const developmentConfig = require('./webpack.dev.conf.js')
 function generateConfig(env) {
   return {
     entry: {
-      app: './src/index.js'
+      app: './index.build.js'
     },
     target: 'web'
   }

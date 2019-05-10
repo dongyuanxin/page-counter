@@ -1,8 +1,8 @@
 {
   "name": "page-counter",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env development --open --config build/webpack.base.conf.js",
     "build": "webpack --env production --config build/webpack.base.conf.js",
