@@ -1,1 +1,3 @@
-export { default as PageCounter } from './src'
+import PageCounter from './src'
+
+export default PageCounter
