@@ -42,3 +42,33 @@ export function formatURL(url) {
 
   return url
 }
+
+/**
+ * 
+ * @param {Object} obj 
+ * @param {Array} options 
+ */
+export function validator(obj, options) {
+  if (!obj || !options) {
+    return false
+  }
+
+  for (let opt of options) {
+    const { key, required, type, defaultValue, prompt } = opt
+    if (!required) {
+      if (!obj[key] && defaultValue) {
+        obj[key] = defaultValue
+      }
+      continue
+    }
+    
+    if (!obj.hasOwnProperty(key)) {
+      return [false, prompt || '']
+    }
+    if (type && (typeof obj[key] !== type)) {
+      return [false, prompt || '']
+    }
+  }
+
+  return [true]
+}

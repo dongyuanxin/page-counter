@@ -1,17 +1,15 @@
 import config from './../config'
 
-const {
-  leancloud,
-  AV
-} = config
-
 function LeanCloud() {
   const {
-    appId,
-    appKey
-  } = leancloud
+    leancloud,
+    AV
+  } = config
 
-  AV.init({appId, appKey})
+  AV.init({
+    appId: leancloud.appId,
+    appKey: leancloud.appKey
+  })
 }
 
 LeanCloud.prototype.ACL = function() {
