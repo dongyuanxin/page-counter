@@ -1,5 +1,6 @@
 import ServerLessFactory from './serverless'
 import { PowerDate } from './utils'
+import config from './config'
 
 const serverless = new ServerLessFactory('leancloud')
 
@@ -8,20 +9,20 @@ async function setData() {
   const data = {
     URL: window.location.pathname || '',
     UserAgent: window.navigator.userAgent,
-    CreateTime: date.now,
-    CreateTimeStamp: date.format()
+    CreateTime: date.format(),
+    CreateTimeStamp: date.now
   }
 
-  serverless.setData('VVTable', data)
+  serverless.setData(config.leancloud.table, data)
 }
 
 async function count() {
-  const dom = document.querySelector('#vview_times')
+  const dom = document.querySelector('#page-counter-total-times')
   if (!dom) {
     return
   }
   
-  const times = serverless.count('leancloud')
+  const times = await serverless.count(config.leancloud.table)
   dom.innerHTML = times
 }
 

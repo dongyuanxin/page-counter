@@ -1,13 +1,24 @@
-const config = window.VVIEW_CONFIG || {}
-const AV = window.AV
+import config from './../config'
+
+const {
+  leancloud,
+  AV
+} = config
 
 function LeanCloud() {
   const {
     appId,
     appKey
-  } = config
+  } = leancloud
 
   AV.init({appId, appKey})
+}
+
+LeanCloud.prototype.ACL = function() {
+  const acl = new AV.ACL()
+  acl.setPublicReadAccess(true)
+  acl.setPublicWriteAccess(false)
+  return acl
 }
 
 LeanCloud.prototype.setData = async function(table, data) {
@@ -17,6 +28,8 @@ LeanCloud.prototype.setData = async function(table, data) {
   for (let key of Reflect.ownKeys(data)) {
     obj.set(key, data[key])
   }
+  
+  obj.setACL(this.ACL())
 
   try {
     obj.save()

@@ -9,7 +9,7 @@ function addZeroStr(num) {
 export function PowerDate() {
   const date = new Date()
   
-  date.now = date.getTime()
+  date.now = date.getTime() + ''
 
   date.format = () => {
     const year = addZeroStr(date.getFullYear()),
