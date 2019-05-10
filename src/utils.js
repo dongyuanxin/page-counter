@@ -24,3 +24,21 @@ export function PowerDate() {
 
   return date
 }
+
+/**
+ * 
+ * @param {String} url 
+ */
+export function formatURL(url) {
+  url = url.trim()
+
+  if (!url.startsWith('/')) {
+    url = `/${url}`
+  }
+
+  if (!url.endsWith('/')) {
+    url = `${url}/`
+  }
+
+  return url
+}

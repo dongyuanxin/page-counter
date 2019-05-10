@@ -39,12 +39,14 @@ LeanCloud.prototype.setData = async function(table, data) {
   }
 }
 
-LeanCloud.prototype.count = async function(table) {
+LeanCloud.prototype.count = async function(table, url) {
   const query = new AV.Query(table)
+  if (typeof url === 'string' && url.length > 0) {
+    query.equalTo('URL', url)
+  }
   
   try {
-    const count = query.count()
-    return count
+    return await query.count()
   } catch (error) {
     return 0
   }

@@ -1,4 +1,5 @@
 import PageCounter from './src'
 
 PageCounter.setData()
-PageCounter.count()
+PageCounter.countTotal()
+PageCounter.countSingle()
