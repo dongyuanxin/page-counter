@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/code_size-3kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.1.0-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/release-v1.1.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
@@ -40,7 +40,7 @@
   }
 </script>
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
-<script src="//unpkg.com/page-couter/lib/page-counter.min.js"></script>
+<script src="//unpkg.com/page-counter/lib/page-counter.min.js"></script>
 ```
 
 ### 方法二：`npm`
@@ -97,6 +97,9 @@ PageCounter.countSingle() // 总浏览量自动放入ID为 page-counter-single-t
 - [ ] 一键备份命令，优化线上空间，本地持久化数据
 - [ ] 更详细的使用和 `code` 文档
 
-## Idea
+## 更多
 
-Welcome to [Issues](https://github.com/dongyuanxin/page-counter/issues)
+通过以下方式提供新的想法来进一步讨论，也可以直接发起 `PR` 参与到项目中：
+
+- [Issues](https://github.com/dongyuanxin/page-counter/issues)
+- [Blog](https://godbmw.com/)

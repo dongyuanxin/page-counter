@@ -1,7 +1,7 @@
 {
   "name": "page-counter",
-  "version": "1.1.0",
-  "description": "",
+  "version": "1.1.1",
+  "description": "基于Serverless开发的的极简网页计数器，支持基于Hexo、Jekyll、Octopress、ReactJS、VueJS等框架开发的博客、网站、中后台等任何应用。",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env development --open --config build/webpack.base.conf.js",
@@ -12,6 +12,15 @@
     "type": "git",
     "url": "git+ssh://git@github.com/dongyuanxin/page-counter.git"
   },
+  "keywords": [
+    "pv",
+    "uv",
+    "counter",
+    "blog",
+    "serverless",
+    "analysis",
+    "es6"
+  ],
   "author": "DongYuanxin",
   "license": "MIT",
   "bugs": {
