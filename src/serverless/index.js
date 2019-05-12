@@ -1,4 +1,5 @@
 import LeanCloud from './leancloud'
+import Bomb from './bomb'
 
 function ServerLessFactory(name) {
   name = name.toLocaleLowerCase()
@@ -6,8 +7,10 @@ function ServerLessFactory(name) {
   switch (name) {
     case 'leancloud':
       return new LeanCloud()
+    case 'bomb':
+      return new Bomb()
     default:
-      throw new Error('Serverless must be one of [leancloud, bomb]')
+      throw new Error('Serverless must be one of [leancloud]')
   }
 }
 
