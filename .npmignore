@@ -1,0 +1,9 @@
+# webpack 
+build/
+dist/
+
+# gh-pages
+examples/
+
+# compiled files
+lib/
