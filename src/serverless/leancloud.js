@@ -30,7 +30,7 @@ LeanCloud.prototype.setData = async function(table, data) {
   obj.setACL(this.ACL())
 
   try {
-    obj.save()
+    await obj.save()
     return true
   } catch (error) {
     return false
