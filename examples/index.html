@@ -7,11 +7,31 @@
   <meta name="keywords" content="Hexo博客计数，Jekyll博客计数器，Octopress访问统计，GitHub Pages博客访问量统计，静态网站计数，静态博客计数，网站计数器，网站计数插件，博客计数器，WordPress计数插件, DedeCMS计数插件, Z-Blog计数器插件, Joomla计数器, emlog计数器, MediaWiki计数器">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./static/style.css">
+  <!-- <script>
+    if (!window.location.protocol.startsWith('https')) {
+      window.location.href = `https://${window.location.host}${window.location.pathname}`
+    }
+  </script> -->
 </head>
 <body>
-  <div>
-    <span id="page-counter-total-times"></span>
+  <div class="logo">
+    <div class="logo-title">
+      Page Counter: 极简网页计数器
+    </div>
+    <div class="logo-method">无后端快速部署</div>
+    <div class="logo-method">多Serverless平台</div>
+    <div class="logo-method">数据安全+持续存储+自持有</div>
+    <div class="logo-btn" id="logo-btn">
+      <a href="https://github.com/dongyuanxin/page-counter" target="_blank">立即使用</a>
+    </div>
   </div>
+  <footer>
+    <span id="busuanzi_container_site_pv">
+      全站访问人数: <span id="page-counter-total-times"></span> |
+      当前页面访问人数: <span id="page-counter-single-times"></span>
+    </span>
+  </footer>
   <script>
     window.PAGE_COUNTER_CONFIG = {
       leancloud: {
@@ -22,5 +42,6 @@
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
+  <script src="//unpkg.com/page-counter/lib/page-counter.min.js"></script>
 </body>
 </html>
