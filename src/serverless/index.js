@@ -7,7 +7,7 @@ function ServerLessFactory(name) {
     case 'leancloud':
       return new LeanCloud()
     default:
-      return null
+      throw new Error('Serverless must be one of [leancloud, bomb]')
   }
 }
 

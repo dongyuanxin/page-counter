@@ -56,9 +56,7 @@ export function validator(obj, options) {
   for (let opt of options) {
     const { key, required, type, defaultValue, prompt } = opt
     if (!required) {
-      if (!obj[key] && defaultValue) {
-        obj[key] = defaultValue
-      }
+      (!obj[key]) && (obj[key] = defaultValue)
       continue
     }
     

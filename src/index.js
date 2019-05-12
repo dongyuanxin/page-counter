@@ -5,7 +5,7 @@ import {
   formatURL 
 } from './utils'
 
-const serverless = new ServerLessFactory('leancloud')
+const serverless = new ServerLessFactory(config.serverless)
 
 async function setData() {
   const date = new PowerDate()
@@ -26,7 +26,7 @@ async function countTotal() {
   }
   
   const times = await serverless.count(config.leancloud.table)
-  dom.innerHTML = times
+  dom.innerHTML = times + config.leancloud.history
 }
 
 async function countSingle() {
