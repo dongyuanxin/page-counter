@@ -1,4 +1,4 @@
-import * as Bmob from 'hydrogen-js-sdk'
+import Bomb from 'hydrogen-js-sdk'
 import { validator } from './utils'
 
 const leancloudRequired = [

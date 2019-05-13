@@ -12,6 +12,14 @@ function Hydrogen() {
   Bomb.initialize(appId, restApi)
 }
 
+Hydrogen.prototype.ACL = function () {
+  return {
+    '*': {
+      read: true
+    }
+  }
+}
+
 Hydrogen.prototype.setData = async function(table, data) {
   const query = Bmob.Query(table)
 
@@ -19,8 +27,10 @@ Hydrogen.prototype.setData = async function(table, data) {
     query.set(key, data[key])
   }
 
+  query.set('ACL', this.ACL())
+
   try {
-    query.save()
+    await query.save()
     return true
   } catch (error) {
     return false
