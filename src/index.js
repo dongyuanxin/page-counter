@@ -5,7 +5,8 @@ import {
   formatURL 
 } from './utils'
 
-const serverless = new ServerLessFactory(config.serverless)
+const platform = config.serverless
+const serverless = new ServerLessFactory(platform)
 
 async function setData() {
   const date = new PowerDate()
@@ -16,7 +17,7 @@ async function setData() {
     CreateTimeStamp: date.now
   }
 
-  serverless.setData(config.leancloud.table, data)
+  serverless.setData(config[platform].table, data)
 }
 
 async function countTotal() {
@@ -25,8 +26,8 @@ async function countTotal() {
     return
   }
   
-  const times = await serverless.count(config.leancloud.table)
-  dom.innerHTML = times + config.leancloud.history
+  const times = await serverless.count(config[platform].table)
+  dom.innerHTML = times + config[platform].history
 }
 
 async function countSingle() {
@@ -35,7 +36,7 @@ async function countSingle() {
     return
   }
 
-  const times = await serverless.count(config.leancloud.table, formatURL(window.location.pathname || ''))
+  const times = await serverless.count(config[platform].table, formatURL(window.location.pathname || ''))
   dom.innerHTML = times
 }
 

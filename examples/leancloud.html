@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Leancloud | 极简网页计数器</title>
+  <meta name="author" content="心谭">
+  <meta name="keywords" content="Hexo博客计数，Jekyll博客计数器，Octopress访问统计，GitHub Pages博客访问量统计，静态网站计数，静态博客计数，网站计数器，网站计数插件，博客计数器，WordPress计数插件, DedeCMS计数插件, Z-Blog计数器插件, Joomla计数器, emlog计数器, MediaWiki计数器">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+  <div>
+    <strong>这是关于Leancloud平台的demo</strong>
+  </div>
+  <div>
+    网站总浏览量: <span id="page-counter-total-times"></span>
+  </div>
+  <div>
+    当前页面浏览量: <span id="page-counter-single-times"></span>
+  </div>
+  <script>
+    window.PAGE_COUNTER_CONFIG = {
+      serverless: 'leancloud',
+      leancloud: {
+        history: 5748,
+        table: 'Test',
+        appId: 'gl4aAbncL3lIRHqMAN44NMbd-gzGzoHsz',
+        appKey: 'IFcB4pHTT7rnqdTeGoGB5Tq5'
+      }
+    }
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
+  <script src="./../dist/page-counter.min.js"></script>
+</body>
+</html>
