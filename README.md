@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/code_size-3kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.3.0-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/release-v1.3.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
