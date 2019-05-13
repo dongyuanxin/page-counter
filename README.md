@@ -16,6 +16,7 @@
 - 支持 `npm` 和 `CDN` 引入
 - 数据持久化存储
 - 支持 `Leancloud`、`Bomb` 平台
+- 支持腾讯云云开发(敬请期待)
 
 ## 浏览器支持
 
@@ -96,7 +97,7 @@ PageCounter.countSingle() // 总浏览量自动放入ID为 page-counter-single-t
 
 修改 `window.PAGE_COUNTER_CONFIG.serverless` 字段以及设置对应平台需要的自定义字段。
 
-### 腾讯云开发(最推荐)
+### 腾讯云云开发(最推荐)
 
 无缝对接小程序，同时支持H5，提供腾讯企业级安全数据护航，而且支持数据导出、导入等常用功能。
 
@@ -139,4 +140,4 @@ window.PAGE_COUNTER_CONFIG = {
 通过以下方式提供新的想法来进一步讨论，也可以直接发起 `PR` 参与到项目中：
 
 - [Issues](https://github.com/dongyuanxin/page-counter/issues)
-- [Blog](https://godbmw.com/)
+- yuanxin.me@gmail.com
