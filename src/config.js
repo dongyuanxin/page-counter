@@ -1,4 +1,3 @@
-import Bomb from 'hydrogen-js-sdk'
 import { validator } from './utils'
 
 const leancloudRequired = [
@@ -75,11 +74,11 @@ class Config {
   }
 
   get Bomb() {
-    if (!Bmob) {
+    if (!window.Bmob) {
       throw new Error('Please import hydrogen sdk')
     }
 
-    return Bomb
+    return window.Bomb
   }
 
   get leancloud() {
