@@ -20,7 +20,12 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # If you depoly it to https://<USERNAME>.github.io/<REPO>:
-git push -f git@github.com:dongyuanxin/page-counter.git master:gh-pages
+if [ "$1" == "https" ] 
+then
+  git push -f https://github.com/dongyuanxin/page-counter.git master:gh-pages
+else 
+  git push -f git@github.com:dongyuanxin/page-counter.git master:gh-pages
+fi
 
 # remove git:
 rm -rf .git/
