@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/code_size-3kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.1.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/release-v1.3.0-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
@@ -15,7 +15,7 @@
 - 源码精简，仅有3kb
 - 支持 `npm` 和 `CDN` 引入
 - 数据持久化存储
-- 支持 `Leancloud` 平台
+- 支持 `Leancloud`、`Bomb` 平台
 
 ## 浏览器支持
 
@@ -56,6 +56,7 @@ npm install --save page-counter
 
 ```javascript
 window.PAGE_COUNTER_CONFIG = {
+  serverless: 'leancloud',
   leancloud: {
     table: '存放记录的表格',
     appId: 'leancloud应用的appId',
@@ -91,9 +92,45 @@ PageCounter.countTotal() // 总浏览量自动放入ID为 page-counter-total-tim
 PageCounter.countSingle() // 总浏览量自动放入ID为 page-counter-single-times 的DOM元素中
 ```
 
+## 多 `Serverless` 平台
+
+修改 `window.PAGE_COUNTER_CONFIG.serverless` 字段以及设置对应平台需要的自定义字段。
+
+### 腾讯云开发(最推荐)
+
+无缝对接小程序，同时支持H5，提供腾讯企业级安全数据护航，而且支持数据导出、导入等常用功能。
+
+目前平台研发功能内测，暂不开放。
+
+### Leancloud
+
+```javascript
+window.PAGE_COUNTER_CONFIG = {
+  serverless: 'leancloud',
+  leancloud: {
+    table: '存放记录的表格',
+    appId: 'leancloud应用的 appId',
+    appKey: 'leancloud应用的 appKey'
+  }
+}
+```
+
+### Bomb
+
+```javascript
+window.PAGE_COUNTER_CONFIG = {
+  serverless: 'bomb',
+  bomb: {
+    table: '存放记录的表格',
+    appId: 'bomb应用的 Application Key',
+    restApi: 'bomb应用的 REST API Key'
+  }
+}
+```
+
 ## Todolist
 
-- [ ] 支持更多地 `Serverless` 平台，包括但不限于小程序云开发、bmob等
+- [ ] 支持更多地 `Serverless` 平台，包括但不限于腾讯云开发、Google Parse等
 - [ ] 一键备份命令，优化线上空间，本地持久化数据
 - [ ] 更详细的使用和 `code` 文档
 
