@@ -1,9 +1,5 @@
-# webpack 
+# webpack config
 build/
-dist/
 
 # gh-pages
 examples/
-
-# compiled files
-lib/
