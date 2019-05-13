@@ -1,6 +1,6 @@
 {
   "name": "page-counter",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "基于Serverless开发的的极简网页计数器，支持基于Hexo、Jekyll、Octopress、ReactJS、VueJS等框架开发的博客、网站、中后台等任何应用。",
   "main": "index.js",
   "scripts": {

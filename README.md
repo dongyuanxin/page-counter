@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/code_size-5kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.3.3-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/release-v1.3.4-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
@@ -23,6 +23,15 @@
 | ![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) |
 | --- | --- | --- | --- | --- |
 | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ×  |
+
+## 快速使用
+
+- [Leancloud 平台](#leancloud-平台)    
+  - [用法一：`CDN` 引入](#用法一cdn-引入)    
+  - [用法二：`npm` 引入](#用法二npm-引入)  
+- [Bomb 平台](#bomb-平台)    
+  - [用法一：`CDN` 引入](#用法一cdn-引入-1)    
+  - [用法二：`npm` 引入](#用法二npm-引入-1)
 
 ## Leancloud 平台
 
@@ -48,7 +57,7 @@
 
 ```html
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
-<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.min.js"></script>
+<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.min.js"></script>
 ```
 
 总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
@@ -112,8 +121,8 @@ import('leancloud-storage')
 引入 `CDN`：
 
 ```html
-<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.bomb-1.6.7.min.js"></script>
-<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.min.js"></script>
+<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.bomb-1.6.7.min.js"></script>
+<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.min.js"></script>
 ```
 
 总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
