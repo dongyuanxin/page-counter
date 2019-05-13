@@ -2,8 +2,8 @@
 
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/code_size-3kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.3.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/code_size-5kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
+[![](https://img.shields.io/badge/release-v1.3.3-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
@@ -12,128 +12,152 @@
 ## 特性
 
 - 无后端快速部署
-- 源码精简，仅有3kb
+- 源码精简，大小仅 5kb
 - 支持 `npm` 和 `CDN` 引入
-- 数据持久化存储
+- 数据安全、自持有、永久存储
 - 支持 `Leancloud`、`Bomb` 平台
-- 支持腾讯云云开发(敬请期待)
+- **支持腾讯云云开发(敬请期待)**
 
 ## 浏览器支持
 
 | ![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) |
 | --- | --- | --- | --- | --- |
-| Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔  |
+| Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ×  |
 
-## 安装
+## Leancloud 平台
 
-### 方法一：`CDN`
+### 用法一：`CDN` 引入
 
-请将以下代码复制到 `</body>` 标签的前面：
+到Leancloud控制台查看应用相关信息，将以下代码插入 `<head>` 标签中：
 
 ```html
 <script>
   window.PAGE_COUNTER_CONFIG = {
+    serverless: 'leancloud',
     leancloud: {
-      table: '存放记录的表格',
+      history: 0, // 历史访客数量，可不填，默认是0
+      table: '存放数据的表格',
       appId: 'leancloud应用的appId',
       appKey: 'leancloud应用的appKey'
     }
   }
 </script>
-<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
-<script src="//unpkg.com/page-counter/lib/page-counter.min.js"></script>
 ```
 
-### 方法二：`npm`
+引入 `CDN`：
+
+```html
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
+<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.min.js"></script>
+```
+
+总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
+
+### 用法二：`npm` 引入
 
 安装：
 
 ```sh
-npm install --save page-counter
-# 或者: yarn add page-counter
+npm install --save page-counter leancloud-storage
 ```
 
-设置全局环境变量：
+使用：
 
 ```javascript
-window.PAGE_COUNTER_CONFIG = {
-  serverless: 'leancloud',
-  leancloud: {
-    table: '存放记录的表格',
-    appId: 'leancloud应用的appId',
-    appKey: 'leancloud应用的appKey'
-  }
-}
+import('leancloud-storage')
+  .then(res => {
+    // 将 Bomb 对象挂载在 window 上
+    window.AV = res.default
+    // 设置应用信息
+    window.PAGE_COUNTER_CONFIG = {
+      serverless: 'leancloud',
+      leancloud: {
+        history: 0, // 历史访客数量，可不填，默认是0
+        table: '存放数据的表格',
+        appId: 'leancloud应用的appId',
+        appKey: 'leancloud应用的appKey'
+      }
+    }
+
+    return import('page-counter')
+  })
+  .then(res => {
+    const PageCounter = res.default
+    PageCounter.setData() // 发送当前页面数据
+    PageCounter.countTotal() // 将总浏览量放入 ID 为 page-counter-total-times 的DOM元素中
+    PageCounter.countSingle() // 将当前页面浏览量放入 ID 为 page-counter-single-times 的DOM元素中
+  })
 ```
 
-## 使用
+## Bomb 平台
 
-总浏览量和当前页面浏览量会分别放在ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中
+### 用法一：`CDN` 引入
 
-### 方法一：`CDN` 引入
+到Bomb控制台查看应用相关信息，将以下代码插入 `<head>` 标签中：
 
 ```html
-<div>
-  网站总浏览量<span id="page-counter-total-times"></span>
-</div>
-<div>
-  当前页面浏览量<span id="page-counter-single-times"></span>
-</div>
-```
-
-### 方法二：`npm` 引入
-
-```javascript
-import PageCounter from page-counter
-
-PageCounter.setData() // 统计当前页面
-
-PageCounter.countTotal() // 总浏览量自动放入ID为 page-counter-total-times 的DOM元素中
-
-PageCounter.countSingle() // 总浏览量自动放入ID为 page-counter-single-times 的DOM元素中
-```
-
-## 多 `Serverless` 平台
-
-修改 `window.PAGE_COUNTER_CONFIG.serverless` 字段以及设置对应平台需要的自定义字段。
-
-### 腾讯云云开发(最推荐)
-
-无缝对接小程序，同时支持H5，提供腾讯企业级安全数据护航，而且支持数据导出、导入等常用功能。
-
-目前平台研发功能内测，暂不开放。
-
-### Leancloud
-
-```javascript
-window.PAGE_COUNTER_CONFIG = {
-  serverless: 'leancloud',
-  leancloud: {
-    table: '存放记录的表格',
-    appId: 'leancloud应用的 appId',
-    appKey: 'leancloud应用的 appKey'
+<script>
+  window.PAGE_COUNTER_CONFIG = {
+    serverless: 'bomb',
+    bomb: {
+      history: 0, // 历史访客数量，可不填，默认是0
+      table: '存放数据的表格',
+      appId: 'Bomb 应用的 Application ID',
+      appKey: 'Bomb 应用的 REST API Key'
+    }
   }
-}
+</script>
 ```
 
-### Bomb
+引入 `CDN`：
+
+```html
+<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.bomb-1.6.7.min.js"></script>
+<script src="//unpkg.com/page-counter@1.3.3/dist/page-counter.min.js"></script>
+```
+
+总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
+
+### 用法二：`npm` 引入
+
+安装：
+
+```sh
+npm install --save page-counter hydrogen-js-sdk
+```
+
+使用：
 
 ```javascript
-window.PAGE_COUNTER_CONFIG = {
-  serverless: 'bomb',
-  bomb: {
-    table: '存放记录的表格',
-    appId: 'bomb应用的 Application Key',
-    restApi: 'bomb应用的 REST API Key'
-  }
-}
+import('hydrogen-js-sdk')
+  .then(res => {
+    // 将 Bomb 对象挂载在 window 上
+    window.Bomb = res.default
+    // 设置应用信息
+    window.PAGE_COUNTER_CONFIG = {
+      serverless: 'bomb',
+      bomb: {
+        history: 0, // 历史访客数量，可不填，默认是0
+        table: '存放数据的表格',
+        appId: 'Bomb 应用的 Application ID',
+        appKey: 'Bomb 应用的 REST API Key'
+      }
+    }
+
+    return import('page-counter')
+  })
+  .then(res => {
+    const PageCounter = res.default
+    PageCounter.setData() // 发送当前页面数据
+    PageCounter.countTotal() // 将总浏览量放入 ID 为 page-counter-total-times 的DOM元素中
+    PageCounter.countSingle() // 将当前页面浏览量放入 ID 为 page-counter-single-times 的DOM元素中
+  })
 ```
 
-## Todolist
+## 待做
 
-- [ ] 支持更多地 `Serverless` 平台，包括但不限于腾讯云开发、Google Parse等
-- [ ] 一键备份命令，优化线上空间，本地持久化数据
-- [ ] 更详细的使用和 `code` 文档
+- [ ] 支持更多的 `Serverless` 平台
+- [ ] 快速本地数据备份
 
 ## 更多
 
