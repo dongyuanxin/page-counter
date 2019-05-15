@@ -1,17 +1,16 @@
 import config from './../config'
 import ServerLessInterface from './interface'
 
-const { 
-  Bomb,
-  bomb: {
-    appId,
-    restApi
-  }
-} = config
-
 class Hydrogen extends ServerLessInterface {
   constructor () {
     super()
+    const { 
+      Bomb,
+      bomb: {
+        appId,
+        restApi
+      }
+    } = config
     Bomb.initialize(appId, restApi)
   }
 
@@ -24,6 +23,7 @@ class Hydrogen extends ServerLessInterface {
   }
 
   async setData (table, data) {
+    const { Bomb } = config
     const query = Bmob.Query(table)
 
     for (let key of Reflect.ownKeys(data)) {
@@ -41,7 +41,9 @@ class Hydrogen extends ServerLessInterface {
   }
 
   async count (table, url) {
+    const { Bomb } = config
     const query = Bmob.Query(table)
+    
     if (typeof url === 'string' && url.length > 0) {
       query.equalTo('URL', '==', url)
     }

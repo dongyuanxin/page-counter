@@ -1,29 +1,29 @@
 import config from './../config'
 import ServerLessInterface from './interface'
 
-const {
-  leancloud: {
-    appId,
-    appKey
-  },
-  AV
-} = config
-
 class LeanCloud extends ServerLessInterface {
   constructor () {
     super()
+    const {
+      leancloud: {
+        appId,
+        appKey
+      },
+      AV
+    } = config
     AV.init({appId, appKey})
+    this.AV = AV
   }
 
   ACL () {
-    const acl = new AV.ACL()
+    const acl = new this.AV.ACL()
     acl.setPublicReadAccess(true)
     acl.setPublicWriteAccess(false)
     return acl
   }
 
   async setData (table, data) {
-    const Obj = AV.Object.extend(table)
+    const Obj = this.AV.Object.extend(table)
     const obj = new Obj()
     
     for (let key of Reflect.ownKeys(data)) {
@@ -41,7 +41,7 @@ class LeanCloud extends ServerLessInterface {
   }
 
   async count (table, url) {
-    const query = new AV.Query(table)
+    const query = new this.AV.Query(table)
     if (typeof url === 'string' && url.length > 0) {
       query.equalTo('URL', url)
     }
