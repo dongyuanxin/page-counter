@@ -1,52 +1,58 @@
 import config from './../config'
+import ServerLessInterface from './interface'
 
-function Hydrogen() {
-  const { 
-    Bomb,
-    bomb: {
-      appId,
-      restApi
+class Hydrogen extends ServerLessInterface {
+  constructor () {
+    super()
+    const { 
+      Bomb,
+      bomb: {
+        appId,
+        restApi
+      }
+    } = config
+    Bomb.initialize(appId, restApi)
+  }
+
+  ACL () {
+    return {
+      '*': {
+        read: true
+      }
     }
-  } = config
+  }
 
-  Bomb.initialize(appId, restApi)
-}
+  async setData (table, data) {
+    const { Bomb } = config
+    const query = Bmob.Query(table)
 
-Hydrogen.prototype.ACL = function () {
-  return {
-    '*': {
-      read: true
+    for (let key of Reflect.ownKeys(data)) {
+      query.set(key, data[key])
+    }
+
+    query.set('ACL', this.ACL())
+
+    try {
+      await query.save()
+      return true
+    } catch (error) {
+      return false
     }
   }
-}
 
-Hydrogen.prototype.setData = async function(table, data) {
-  const query = Bmob.Query(table)
+  async count (table, url) {
+    const { Bomb } = config
+    const query = Bmob.Query(table)
+    
+    if (typeof url === 'string' && url.length > 0) {
+      query.equalTo('URL', '==', url)
+    }
 
-  for (let key of Reflect.ownKeys(data)) {
-    query.set(key, data[key])
-  }
-
-  query.set('ACL', this.ACL())
-
-  try {
-    await query.save()
-    return true
-  } catch (error) {
-    return false
-  }
-}
-
-Hydrogen.prototype.count = async function(table, url) {
-  const query = Bmob.Query(table)
-  if (typeof url === 'string' && url.length > 0) {
-    query.equalTo('URL', '==', url)
-  }
-
-  try {
-    return await query.count()
-  } catch (error) {
-    return 0
+    try {
+      return await query.count()
+    } catch (error) {
+      return 0
+    }
   }
 }
 

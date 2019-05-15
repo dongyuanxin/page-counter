@@ -1,3 +1,5 @@
+import pkg from './../package.json'
+
 function addZeroStr(num) {
   if (num < 10) {
     return '0' + num
@@ -69,4 +71,13 @@ export function validator(obj, options) {
   }
 
   return [true]
+}
+
+export function copyright() {
+  console.log(
+    `\n%c ${pkg.name} v${pkg.version} %c` + 
+    ` ${pkg.homepage} \n` , 
+    'color: #fadfa3; background: #030307; padding:3px 0;', 
+    ''
+  )
 }
