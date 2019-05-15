@@ -2,8 +2,11 @@ import ServerLessFactory from './serverless'
 import config from './config'
 import { 
   PowerDate, 
-  formatURL 
+  formatURL,
+  copyright 
 } from './utils'
+
+copyright()
 
 const platform = config.serverless
 const serverless = new ServerLessFactory(platform)
