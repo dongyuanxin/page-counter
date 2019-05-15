@@ -1,0 +1,118 @@
+@keyframes b {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #0C0C0C;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+header a {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: bold;
+  margin: 0 15px;
+  user-select: none;
+  letter-spacing: 1px;
+  color: rgb(101, 103, 101);
+}
+
+header a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all .25s ease;
+}
+
+header a:hover {
+  color: white;
+}
+
+header a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  animation: b 2s forwards;
+  text-align: center;
+}
+
+.logo-title {
+  margin-bottom: 20px;
+  font-size: 25px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.logo-method {
+  letter-spacing: 5px;  
+  color: rgb(101, 103, 101);
+  line-height: 1.8;
+}
+
+.logo-btn {
+  display: inline-flex;
+  margin-top: 25px;
+  background: white;
+  border: 2px solid white;
+  padding: 6px 8px;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.logo-btn a {
+  letter-spacing: 2px;
+  color: #0C0C0C;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(101, 103, 101);
+  font-size: 12px;
+}
