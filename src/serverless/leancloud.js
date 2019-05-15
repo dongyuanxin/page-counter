@@ -1,54 +1,57 @@
 import config from './../config'
+import ServerLessInterface from './interface'
 
-function LeanCloud() {
-  const {
-    leancloud,
-    AV
-  } = config
+const {
+  leancloud: {
+    appId,
+    appKey
+  },
+  AV
+} = config
 
-  AV.init({
-    appId: leancloud.appId,
-    appKey: leancloud.appKey
-  })
-}
+class LeanCloud extends ServerLessInterface {
+  constructor () {
+    super()
+    AV.init({appId, appKey})
+  }
 
-LeanCloud.prototype.ACL = function() {
-  const acl = new AV.ACL()
-  acl.setPublicReadAccess(true)
-  acl.setPublicWriteAccess(false)
-  return acl
-}
+  ACL () {
+    const acl = new AV.ACL()
+    acl.setPublicReadAccess(true)
+    acl.setPublicWriteAccess(false)
+    return acl
+  }
 
-LeanCloud.prototype.setData = async function(table, data) {
-  const Obj = AV.Object.extend(table)
-  const obj = new Obj()
+  async setData (table, data) {
+    const Obj = AV.Object.extend(table)
+    const obj = new Obj()
+    
+    for (let key of Reflect.ownKeys(data)) {
+      obj.set(key, data[key])
+    }
+    
+    obj.setACL(this.ACL())
   
-  for (let key of Reflect.ownKeys(data)) {
-    obj.set(key, data[key])
+    try {
+      await obj.save()
+      return true
+    } catch (error) {
+      return false
+    }
   }
-  
-  obj.setACL(this.ACL())
 
-  try {
-    await obj.save()
-    return true
-  } catch (error) {
-    return false
+  async count (table, url) {
+    const query = new AV.Query(table)
+    if (typeof url === 'string' && url.length > 0) {
+      query.equalTo('URL', url)
+    }
+    
+    try {
+      return await query.count()
+    } catch (error) {
+      return 0
+    }
   }
 }
-
-LeanCloud.prototype.count = async function(table, url) {
-  const query = new AV.Query(table)
-  if (typeof url === 'string' && url.length > 0) {
-    query.equalTo('URL', url)
-  }
-  
-  try {
-    return await query.count()
-  } catch (error) {
-    return 0
-  }
-}
-
 
 export default LeanCloud
