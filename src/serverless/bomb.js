@@ -11,9 +11,13 @@ class Hydrogen extends ServerLessInterface {
         restApi
       }
     } = config
+    // Can't add Bomb to this. Otherwise, context error may occur.
     Bomb.initialize(appId, restApi)
   }
 
+  /**
+   * @return {*} public read and nobody write permission
+   */
   ACL () {
     return {
       '*': {
@@ -22,6 +26,11 @@ class Hydrogen extends ServerLessInterface {
     }
   }
 
+  /**
+   * Add data to table
+   * @param {String} table 
+   * @param {Object} data 
+   */ 
   async setData (table, data) {
     const { Bomb } = config
     const query = Bmob.Query(table)
@@ -40,6 +49,12 @@ class Hydrogen extends ServerLessInterface {
     }
   }
 
+  /**
+   * Calculate number of records in table.
+   * If url is not null, filter records whose URL is not equal to 'url'
+   * @param {String} table 
+   * @param {String} url 
+   */
   async count (table, url) {
     const { Bomb } = config
     const query = Bmob.Query(table)

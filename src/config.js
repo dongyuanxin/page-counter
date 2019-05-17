@@ -54,6 +54,10 @@ const bombRequired = [
   }
 ]
 
+/**
+ * Use many setters for dynamicly reading variables from window. 
+ * Because variables may be loaded by async and after script
+ */
 class Config {
   constructor() {}
 

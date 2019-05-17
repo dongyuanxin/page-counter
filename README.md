@@ -6,7 +6,6 @@
 [![](https://img.shields.io/badge/release-v1.4.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
-
 基于 `Serverless` 开发的的**极简网页计数器**，支持基于 `Hexo`、`Jekyll`、`Octopress`、`ReactJS`、`VueJS` 等框架开发的博客、网站、中后台等**任何应用**。
 
 ## 特性

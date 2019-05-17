@@ -1,5 +1,13 @@
 import pkg from './../package.json'
 
+/**
+ * Example:
+ * ```javascript
+ * addZeroStr(1) // '01'
+ * addZeroStr(32) // '32'
+ * ```
+ * @param {Number} num 
+ */
 function addZeroStr(num) {
   if (num < 10) {
     return '0' + num
@@ -8,6 +16,9 @@ function addZeroStr(num) {
   }
 }
 
+/**
+ * Add format function to Date Object
+ */
 export function PowerDate() {
   const date = new Date()
   
@@ -28,7 +39,7 @@ export function PowerDate() {
 }
 
 /**
- * 
+ * Add '/' to url both sides
  * @param {String} url 
  */
 export function formatURL(url) {
@@ -46,7 +57,7 @@ export function formatURL(url) {
 }
 
 /**
- * 
+ * Validate obj as options requires
  * @param {Object} obj 
  * @param {Array} options 
  */
@@ -73,6 +84,9 @@ export function validator(obj, options) {
   return [true]
 }
 
+/**
+ * Print copyright in console
+ */
 export function copyright() {
   console.log(
     `\n%c ${pkg.name} v${pkg.version} %c` + 

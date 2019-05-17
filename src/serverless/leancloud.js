@@ -15,6 +15,9 @@ class LeanCloud extends ServerLessInterface {
     this.AV = AV
   }
 
+  /**
+   * @return {*} public read and nobody write permission
+   */
   ACL () {
     const acl = new this.AV.ACL()
     acl.setPublicReadAccess(true)
@@ -22,6 +25,11 @@ class LeanCloud extends ServerLessInterface {
     return acl
   }
 
+  /**
+   * Add data to table
+   * @param {String} table 
+   * @param {Object} data 
+   */
   async setData (table, data) {
     const Obj = this.AV.Object.extend(table)
     const obj = new Obj()
@@ -40,6 +48,12 @@ class LeanCloud extends ServerLessInterface {
     }
   }
 
+  /**
+   * Calculate number of records in table.
+   * If url is not null, filter records whose URL is not equal to 'url'
+   * @param {String} table 
+   * @param {String} url 
+   */
   async count (table, url) {
     const query = new this.AV.Query(table)
     if (typeof url === 'string' && url.length > 0) {

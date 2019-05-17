@@ -1,3 +1,7 @@
+/**
+ * Abstract interface for other serverless children class
+ * More platforms children class must extend this
+ */
 export default class ServerLessInterface {
   constructor () {}
 
