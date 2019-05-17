@@ -42,7 +42,7 @@ export function formatURL(url) {
     url = `${url}/`
   }
 
-  return url
+  return encodeURIComponent(url)
 }
 
 /**

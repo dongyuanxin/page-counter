@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/based-serverless-ff69b4.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/build-success-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 [![](https://img.shields.io/badge/code_size-5kb-success.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
-[![](https://img.shields.io/badge/release-v1.3.4-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
+[![](https://img.shields.io/badge/release-v1.4.1-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter/issues)
 [![](https://img.shields.io/badge/license-MIT-blue.svg?style=popout-square)](https://github.com/dongyuanxin/page-counter)
 
 
@@ -57,7 +57,7 @@
 
 ```html
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
-<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.min.js"></script>
+<script src="//unpkg.com/page-counter@1.4.1/dist/page-counter.min.js"></script>
 ```
 
 总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
@@ -121,8 +121,8 @@ import('leancloud-storage')
 引入 `CDN`：
 
 ```html
-<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.bomb-1.6.7.min.js"></script>
-<script src="//unpkg.com/page-counter@1.3.4/dist/page-counter.min.js"></script>
+<script src="//unpkg.com/page-counter@1.4.1/dist/page-counter.bomb-1.6.7.min.js"></script>
+<script src="//unpkg.com/page-counter@1.4.1/dist/page-counter.min.js"></script>
 ```
 
 总浏览量和当前页面浏览量会自动放入ID为 `page-counter-total-times` 和 `page-counter-single-times` 的DOM元素中。
